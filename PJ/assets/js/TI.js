@@ -117,18 +117,18 @@ function initImageInteractions() {
         // 마우스 진입 시 확대 애니메이션
         item.addEventListener('mouseenter', function () {
             gsap.to(imgWrap, {
-                scale: 1.2,  // 이미지 확대
-                duration: 0.5,  // 애니메이션 지속 시간
-                ease: 'power1.out'  // 애니메이션 이징
+                scale: 1.2,
+                duration: 0.5,
+                ease: 'power1.out'
             });
         });
 
         // 마우스 이탈 시 축소 애니메이션
         item.addEventListener('mouseleave', function () {
             gsap.to(imgWrap, {
-                scale: 1,  // 이미지 원래 크기로 복귀
-                duration: 0.5,  // 애니메이션 지속 시간
-                ease: 'power1.out'  // 애니메이션 이징
+                scale: 1,
+                duration: 0.5,
+                ease: 'power1.out'
             });
         });
     });
