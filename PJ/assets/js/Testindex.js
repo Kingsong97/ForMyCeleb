@@ -1,44 +1,95 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const container = document.querySelector('.columns'); // 이미지를 삽입할 컨테이너 선택
+// 선택자
+const columnWrap = document.querySelector(".column-wrap");
+const columnG = document.querySelector(".column");
+const column1 = document.querySelector(".idol1");
+const column2 = document.querySelector(".idol2");
+const column3 = document.querySelector(".idol3");
 
-    // 이미지 인터랙션 로직 (확대/축소, 마우스 이벤트)
-    function initImageInteractions() {
-        const items = document.querySelectorAll('.column__item');
+let photoInfo = [];
+let currentIndex = 0;
 
-        items.forEach(item => {
-            const img = item.querySelector('.column__item-img'); // 이미지 선택
-
-            item.addEventListener('click', function () {
-
-                const currentScale = gsap.getProperty(img, 'scale') === 1 ? 1.2 : 1;
-                gsap.to(img, {
-                    scale: currentScale,
-                    duration: 0.7,
-                    ease: 'power2.out'
-                });
+const fetchPhoto = async () => {
+    await fetch("https://gnlgk.github.io/class2024/json/girlgroup.json")
+        .then(res => res.json())
+        .then(items => {
+            photoInfo = items.map(item => {
+                return {
+                    imgurl: item.image_url,
+                };
             });
-
-            item.addEventListener('mouseenter', function () {
-                gsap.to(img, {
-                    scale: 1.1,
-                    duration: 0.3,
-                    ease: 'power1.out'
-                });
-            });
-
-            item.addEventListener('mouseleave', function () {
-                gsap.to(img, {
-                    scale: 1,
-                    duration: 0.3,
-                    ease: 'power1.out'
-                });
-            });
+            updatePhoto1();
+            updatePhoto2();
+            updatePhoto3();
         });
-    }
+};
 
-    initImageInteractions(); // 이미지 인터랙션 함수 호출
+const updatePhoto1 = () => {
+    column1.innerHTML = "";
+    photoInfo.forEach((photo, index) => {
+        let photoWrapTag = `
+            <figure class="column__item">
+                <div class="column__item-imgwrap" data-pos="${(index * 3) + 2}">
+                    <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+                    </div>
+                </div>
+                <figcaption class="column__item-caption">
+                    <span>${index + 1}</span>
+                    <span>${index + 1}</span>
+                </figcaption>
+            </figure>
+        `;
+        column1.innerHTML += photoWrapTag;
+    });
+    initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
+};
 
-    // Locomotive Scroll 인스턴스 생성 및 스크롤 이벤트 설정
+const updatePhoto2 = () => {
+    column2.innerHTML = "";
+    photoInfo.forEach((photo, index) => {
+        let photoWrapTag = `
+            <figure class="column__item">
+                <div class="column__item-imgwrap" data-pos="${(index * 3) + 1}">
+                    <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+                    </div>
+                </div>
+                <figcaption class="column__item-caption">
+                    <span>${index + 1}</span>
+                    <span>${index + 1}</span>
+                </figcaption>
+            </figure>
+        `;
+        column2.innerHTML += photoWrapTag;
+    });
+    initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
+};
+
+const updatePhoto3 = () => {
+    column3.innerHTML = "";
+    photoInfo.forEach((photo, index) => {
+        let photoWrapTag = `
+            <figure class="column__item">
+                <div class="column__item-imgwrap" data-pos="${(index * 3) + 3}">
+                    <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+                    </div>
+                </div>
+                <figcaption class="column__item-caption">
+                    <span>${index + 1}</span>
+                    <span>${index + 1}</span>
+                </figcaption>
+            </figure>
+        `;
+        column3.innerHTML += photoWrapTag;
+    });
+    initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await fetchPhoto();  // 이미지 로드를 기다립니다.
+    initScroll();    // 모든 이미지 업데이트 후 스크롤 초기화
+});
+
+
+function initScroll() {
     const scroll = new LocomotiveScroll({
         el: document.querySelector('[data-scroll-container]'),
         smooth: true,
@@ -57,4 +108,35 @@ document.addEventListener('DOMContentLoaded', function () {
             column.style.transform = `translateY(${obj.scroll.y}px)`;
         });
     });
+}
+
+function initImageInteractions() {
+    const items = document.querySelectorAll('.column__item');
+    items.forEach(item => {
+        const imgWrap = item.querySelector('.column__item-imgwrap');
+
+        // 마우스 진입 시 확대 애니메이션
+        item.addEventListener('mouseenter', function () {
+            gsap.to(imgWrap, {
+                scale: 1.2,
+                duration: 0.5,
+                ease: 'power1.out'
+            });
+        });
+
+        // 마우스 이탈 시 축소 애니메이션
+        item.addEventListener('mouseleave', function () {
+            gsap.to(imgWrap, {
+                scale: 1,
+                duration: 0.5,
+                ease: 'power1.out'
+            });
+        });
+    });
+};
+
+document.querySelector(".button-menu").addEventListener("click", () => {
+    const fullscreenMenu = document.querySelector(".fullscreen_menu");
+    fullscreenMenu.classList.toggle("overlay");
+    document.querySelector(".button-menu").classList.toggle("open");
 });
