@@ -133,3 +133,13 @@ function initImageInteractions() {
         });
     });
 }
+
+document.getElementById('loginButton').addEventListener('click', function () {
+    document.getElementById('modal').style.display = 'block';
+    document.body.classList.add('blur');
+});
+
+document.querySelector('.close').addEventListener('click', function () {
+    document.getElementById('modal').style.display = 'none';
+    document.body.classList.remove('blur');
+});
