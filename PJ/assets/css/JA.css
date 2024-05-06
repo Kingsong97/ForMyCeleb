@@ -666,7 +666,7 @@ html.has-scroll-dragging {
 	margin: 10% auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 50%;
+	width: 30%;
 	/* 이 값을 조정하여 로그인 창의 너비를 조절 */
 	height: 80%;
 	/* 이 값을 조정하여 로그인 창의 높이를 조절 */
@@ -686,7 +686,7 @@ iframe {
 .close {
 	color: #aaa;
 	float: right;
-	font-size: 28px;
+	font-size: 12px;
 	font-weight: bold;
 }
 
@@ -696,6 +696,7 @@ iframe {
 	text-decoration: none;
 	cursor: pointer;
 }
+
 
 /* 블러 효과 */
 /* .blur {
