@@ -3,14 +3,6 @@
     padding: 0;
 }
 
-/*
-body {
-    margin: 0;
-    color: #6a6f8c;
-    background: #181717;
-    font: 600 16px/18px 'Open Sans', sans-serif;
-}
-*/
 *,
 :after,
 :before {
@@ -34,21 +26,41 @@ a {
 }
 
 .login-wrap {
+    margin: 0;
+    color: #666;
+    background: #aaa;
+    font: 600 16px/18px 'Open Sans', sans-serif;
     width: 100%;
     margin: auto;
     max-width: 525px;
     min-height: 670px;
     position: relative;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
 }
 
 .login-html {
     width: 100%;
     height: 100%;
-    top: 90px;
     position: absolute;
     padding: 90px 70px 50px 70px;
     background: #000;
+}
+
+/* scroll */
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background-color: #000;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: #222;
+    border-radius: 20px;
+}
+
+html::-webkit-scrollbar-button {
+    display: none;
 }
 
 .login-html .sign-in-htm,
@@ -87,7 +99,7 @@ a {
 .login-html .sign-in:checked+.tab,
 .login-html .sign-up:checked+.tab {
     color: #fff;
-    border-color: #1161ee;
+    border-color: #fff;
 }
 
 .login-form {
@@ -118,7 +130,6 @@ a {
 }
 
 .login-form .group input[data-type="password"] {
-    text-security: circle;
     -webkit-text-security: circle;
 }
 
@@ -128,7 +139,9 @@ a {
 }
 
 .login-form .group .button {
-    background: #1161ee;
+    background: #fff;
+    color: #000;
+    font-weight: 1000;
 }
 
 .login-form .group label .icon {
@@ -137,7 +150,7 @@ a {
     border-radius: 2px;
     position: relative;
     display: inline-block;
-    background: rgba(255, 255, 255, .1);
+    background: #66666680;
 }
 
 .login-form .group label .icon:before,
@@ -168,7 +181,7 @@ a {
 }
 
 .login-form .group .check:checked+label .icon {
-    background: #1161ee;
+    background: #666;
 }
 
 .login-form .group .check:checked+label .icon:before {
@@ -190,45 +203,59 @@ a {
 .hr {
     height: 2px;
     margin: 60px 0 50px 0;
-    background: rgba(255, 255, 255, .2);
+    background: #66666680;
 }
 
 .foot-lnk {
     text-align: center;
 }
 
+/* 모달 기본 스타일 */
 .modal {
     display: none;
-    z-index: 1;
     position: fixed;
+    z-index: 20000;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    opacity: 0;
-    visibility: hidden;
+    background-color: rgb(0, 0, 0, 0.6);
 }
 
 .modal-content {
     position: relative;
-    margin: 0;
-    color: #6a6f8c;
-    left: 0;
-    top: 30px;
-    width: 100%;
-    height: 100%;
+    background-color: #000;
+    margin: 8rem auto;
+    width: 31rem;
+    /* 이 값을 조정하여 로그인 창의 너비를 조절 */
+    height: 41rem;
+    /* 이 값을 조정하여 로그인 창의 높이를 조절 */
+    z-index: 1;
 }
 
-.show-modal {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1.0);
+iframe {
+    width: 100%;
+    /* iframe 너비를 모달 컨텐츠 크기에 맞춤 */
+    height: 100%;
+    /* iframe 높이를 모달 컨텐츠 크기에 맞춤 */
+    border: none;
+    /* iframe 경계선 제거 */
+    z-index: 1;
 }
 
 .close {
-    right: 12px;
-    top: 25px;
-    position: absolute;
-    color: azure;
+    color: #aaa;
+    background-color: #000;
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 3px 8px;
+}
+
+.close:hover,
+.close:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
 }
