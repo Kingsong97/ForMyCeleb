@@ -26,7 +26,7 @@
                 $_SESSION['youID'] = $memberInfo['youID'];
          
                 echo "<script>alert('로그인 성공');</script>";
-                echo "<script>window.location.href = '../index.html';</script>";
+                echo "<script>window.location.href = '../index.php';</script>";
 
             } else {
                 // 비밀번호가 일치하지 않는 경우

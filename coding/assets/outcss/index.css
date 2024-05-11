@@ -17,7 +17,7 @@ body {
     --color-heading: #fff;
     color: var(--color-text);
     background-color: var(--color-bg);
-    font-family: nimbus-sans, sans-serif;
+    font-family: 'Prata';
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     --ratio: 0.75;
@@ -660,59 +660,3 @@ html.has-scroll-dragging {
 }
 
 /*# sourceMappingURL=index.14f68720.css.map */
-
-/* 모달 기본 스타일 */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 20000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #66666680;
-}
-
-.modal-content {
-    position: relative;
-    background-color: #000;
-    margin: 8rem auto;
-    width: 31rem;
-    /* 이 값을 조정하여 로그인 창의 너비를 조절 */
-    height: 41rem;
-    /* 이 값을 조정하여 로그인 창의 높이를 조절 */
-    z-index: 1;
-}
-
-iframe {
-    width: 100%;
-    /* iframe 너비를 모달 컨텐츠 크기에 맞춤 */
-    height: 100%;
-    /* iframe 높이를 모달 컨텐츠 크기에 맞춤 */
-    border: none;
-    /* iframe 경계선 제거 */
-    z-index: 1;
-}
-
-.close {
-    color: #aaa;
-    background-color: #000;
-    float: right;
-    font-size: 12px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    padding: 3px 8px;
-}
-
-.close:hover,
-.close:focus {
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-
-/* 블러 효과 */
-/* .blur {
-	filter: blur(8px);
-} */

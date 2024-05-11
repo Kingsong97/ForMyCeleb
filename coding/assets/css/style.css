@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
 /* 기본 설정 */
+@import "fonts.css";
 @import "commons.css";
 
 /* 섹션 설정 */

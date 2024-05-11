@@ -64,6 +64,41 @@
             </div>
         </div>
     </div>
+    <script>
+        function checkUserId() {
+            const userId = document.getElementById('userId').value;
+            if (userId.length > 0) {  // 최소 입력 길이를 지정할 수 있습니다.
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'checkUserId.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    if (this.status == 200) {
+                        document.getElementById('userIdResult').innerHTML = this.responseText;
+                    }
+                };
+                xhr.send('userId=' + encodeURIComponent(userId));
+            } else {
+                document.getElementById('userIdResult').innerHTML = "";
+            }
+        }
+
+        function checkUserEmail() {
+            const userEmail = document.getElementById('userEmail').value;
+            if (userEmail.length > 0) {  // 최소 입력 길이를 지정할 수 있습니다.
+                const xhr = new XMLHttpRequest();
+                xhr.open('POST', 'checkUserEmail.php', true);
+                xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+                xhr.onload = function () {
+                    if (this.status == 200) {
+                        document.getElementById('userEmailResult').innerHTML = this.responseText;
+                    }
+                };
+                xhr.send('userEmail=' + encodeURIComponent(userEmail));
+            } else {
+                document.getElementById('userEmailResult').innerHTML = "";
+            }
+        }
+    </script>
 </body>
 
 </html>
