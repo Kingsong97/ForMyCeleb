@@ -1,7 +1,11 @@
+<?php
+    include "connect/connect.php";
+    include "connect/session.php";
+?>
+
 <!DOCTYPE html>
 <html lang="ko" class="no-js">
 <!-- php -->
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,18 +22,30 @@
 <body class="loading">
     <main>
         <div class="frame">
-            <h1 class="frame__title">For My Celebrity</h1>
+        <h1 class="frame__title"><span id="categoryTitle">category</span></h1>
+        <div class="menu">
+            <div class="menuContent">
+                <ul>
+                    <li>Home</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+        </div>
             <nav class="frame__links">
-                <a href="../create/createMember.php">notice</a>
+                <a href="#">notice</a>
                 <a href="#">community</a>
                 <a href="#">category</a>
             </nav>
-            <button class="unbutton button-menu" aria-label="Logout">
-                <span><a href="signup/signOut.php" id="logoutButton">Logout</a></span>
-            </button>
-            <button class="unbutton button-menu" aria-label="Open the menu">
-                <span><a href="#" id="loginButton">Login</a></span>
-            </button>
+            <?php if (isset($_SESSION['memberID'])) { ?>
+    <button class="unbutton button-menu" aria-label="Logout">
+        <span><a href="signup/signOut.php" id="logoutButton">Logout</a></span>
+    </button>
+<?php } else { ?>
+    <button class="unbutton button-menu" aria-label="Open the menu">
+        <span><a href="#" id="loginButton">Login</a></span>
+    </button>
+<?php } ?>
 
             <!-- <button class="unbutton button-menu" aria-label="Open the menu"><span><a href="#"
                         id="loginButton">login</a></span></button> -->
@@ -376,7 +392,7 @@
                                     <div class="group">
                                         <label for="register-email" class="label">이메일</label>
                                         <input id="register-email" name="youEmail" type="text" class="input">
-                                        <div id="userEmailResult"></div> <!-- 중복 검사 결과를 표시할 요소 -->
+                                        <div id="userEmailResult"></div>  <!-- 중복 검사 결과를 표시할 요소 -->
                                     </div>
                                     <div class="group">
                                         <input type="submit" class="button" value="가입하기">
@@ -407,75 +423,7 @@
     <!-- 사용자 정의 JS 로드 -->
 
     <script src="../coding/assets/js/index.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const userIdInput = document.getElementById('register-user');
-            if (userIdInput) {
-                userIdInput.addEventListener('input', checkUserId);
-            } else {
-                console.error('Register user input not found');
-            }
-
-            const userEmailInput = document.getElementById('register-email');
-            if (userEmailInput) {
-                userEmailInput.addEventListener('input', checkUserEmail);
-            } else {
-                console.error('Register email input not found');
-            }
-        });
-
-        function checkUserId() {
-            const userId = document.getElementById('register-user').value;
-            if (userId.length > 0) {
-                fetch('signup/checkUserId.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'register-user=' + encodeURIComponent(userId)
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById('userIdResult').innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        document.getElementById('userIdResult').innerHTML = "오류가 발생했습니다.";
-                    });
-            } else {
-                document.getElementById('userIdResult').innerHTML = "아이디를 입력하세요.";
-            }
-        }
-
-        function checkUserEmail() {
-            const userEmail = document.getElementById('register-email').value;
-            if (userEmail.length > 0) {
-                fetch('signup/checkUserEmail.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: 'register-email=' + encodeURIComponent(userEmail)
-                })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok');
-                        }
-                        return response.text();
-                    })
-                    .then(data => {
-                        document.getElementById('userEmailResult').innerHTML = data;
-                    })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        document.getElementById('userEmailResult').innerHTML = "오류가 발생했습니다.";
-                    });
-            } else {
-                document.getElementById('userEmailResult').innerHTML = "이메일을 입력하세요.";
-            }
-        }
-    </script>
+    <script src="coding/assets/js/regCheck.js"></script>
 </body>
 
 </html>

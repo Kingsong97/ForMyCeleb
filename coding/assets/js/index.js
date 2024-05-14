@@ -9,7 +9,7 @@ let photoInfo = [];
 let currentIndex = 0;
 
 const fetchPhoto = async () => {
-    await fetch("https://gnlgk.github.io/class2024/json/imgzip.json")
+    await fetch("https://gnlgk.github.io/class2024/json/nmixx.json")
         .then(res => res.json())
         .then(items => {
             photoInfo = items.map(item => {
@@ -25,61 +25,70 @@ const fetchPhoto = async () => {
 
 const updatePhoto1 = () => {
     column1.innerHTML = "";
-    photoInfo.forEach((photo, index) => {
-        let photoWrapTag = `
-            <figure class="column__item">
-                <div class="column__item-imgwrap" data-pos="${(index * 3) + 2}">
-                    <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+    for (let index = 0; index < photoInfo.length; index++) {
+        let photo = photoInfo[index * 3 + 2];
+        if (photo && photo.imgurl) {
+            let photoWrapTag = `
+                <figure class="column__item">
+                    <div class="column__item-imgwrap" data-pos="${(index * 3) + 2}">
+                        <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+                        </div>
                     </div>
-                </div>
-                <figcaption class="column__item-caption">
-                    <span>${index + 1}</span>
-                    <span>${index + 1}</span>
-                </figcaption>
-            </figure>
-        `;
-        column1.innerHTML += photoWrapTag;
-    });
+                    <figcaption class="column__item-caption">
+                        <span>${index + 1}</span>
+                        <span>${index + 1}</span>
+                    </figcaption>
+                </figure>
+            `;
+            column1.innerHTML += photoWrapTag;
+        }
+    }
     initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
 };
 
 const updatePhoto2 = () => {
     column2.innerHTML = "";
-    photoInfo.forEach((photo, index) => {
-        let photoWrapTag = `
-            <figure class="column__item">
-                <div class="column__item-imgwrap" data-pos="${(index * 3) + 1}">
-                    <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+    for (let index = 0; index * 3 + 1 < photoInfo.length; index++) {
+        let photo = photoInfo[index * 3 + 1];
+        if (photo && photo.imgurl) {
+            let photoWrapTag = `
+                <figure class="column__item">
+                    <div class="column__item-imgwrap" data-pos="${(index * 3) + 1}">
+                        <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+                        </div>
                     </div>
-                </div>
-                <figcaption class="column__item-caption">
-                    <span>${index + 1}</span>
-                    <span>${index + 1}</span>
-                </figcaption>
-            </figure>
-        `;
-        column2.innerHTML += photoWrapTag;
-    });
+                    <figcaption class="column__item-caption">
+                        <span>${index + 1}</span>
+                        <span>${index + 1}</span>
+                    </figcaption>
+                </figure>
+            `;
+            column2.innerHTML += photoWrapTag;
+        }
+    }
     initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
 };
 
 const updatePhoto3 = () => {
     column3.innerHTML = "";
-    photoInfo.forEach((photo, index) => {
-        let photoWrapTag = `
-            <figure class="column__item">
-                <div class="column__item-imgwrap" data-pos="${(index * 3) + 3}">
-                    <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+    for (let index = 0; index * 3 + 3 < photoInfo.length; index++) {
+        let photo = photoInfo[index * 3 + 3];
+        if (photo && photo.imgurl) {
+            let photoWrapTag = `
+                <figure class="column__item">
+                    <div class="column__item-imgwrap" data-pos="${(index * 3) + 3}">
+                        <div class="column__item-img" style="background-image:url(${photo.imgurl})">
+                        </div>
                     </div>
-                </div>
-                <figcaption class="column__item-caption">
-                    <span>${index + 1}</span>
-                    <span>${index + 1}</span>
-                </figcaption>
-            </figure>
-        `;
-        column3.innerHTML += photoWrapTag;
-    });
+                    <figcaption class="column__item-caption">
+                        <span>${index + 1}</span>
+                        <span>${index + 1}</span>
+                    </figcaption>
+                </figure>
+            `;
+            column3.innerHTML += photoWrapTag;
+        }
+    }
     initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
 };
 
@@ -147,4 +156,41 @@ document.querySelector('.close').addEventListener('click', function () {
     // 모달 창을 숨기고, 본문의 흐림 효과를 제거합니다.
     document.getElementById('modal').style.display = 'none';
     document.body.classList.remove('blur');
+});
+
+// 카테고리 메뉴
+document.getElementById("categoryTitle").addEventListener("click", function () {
+    const menu = document.querySelector(".menu");
+    const menuContent = document.querySelector(".menu .menuContent");
+
+    if (menu.classList.contains("active")) {
+        gsap.to(menuContent, {
+            duration: 0.5,
+            opacity: 0,
+            visibility: "hidden"
+        });
+        gsap.to(menu, {
+            duration: 0.5,
+            width: "70px",
+            opacity: 0,
+            visibility: "hidden",
+            onComplete: () => {
+                menu.classList.remove("active");
+            }
+        });
+    } else {
+        menu.classList.add("active");
+        gsap.timeline()
+            .to(menu, {
+                duration: 0.8,
+                width: "calc(100% - 140px)",
+                opacity: 1,
+                visibility: "visible",
+            })
+            .to(menuContent, {
+                duration: 0.5,
+                opacity: 1,
+                visibility: "visible"
+            }, "-=0.1");
+    }
 });

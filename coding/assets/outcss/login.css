@@ -44,9 +44,6 @@ a {
     background: #000;
 }
 
-#loginButton {
-    border: 1px solid #000;
-}
 
 /* scroll */
 html::-webkit-scrollbar {
@@ -242,6 +239,18 @@ html::-webkit-scrollbar-button {
 .foot-lnk {
     text-align: center;
 }
+
+#loginButton,
+#logoutButton {
+    writing-mode: vertical-rl;
+    text-transform: uppercase;
+}
+
+#loginButton:hover,
+#logoutButton:hover {
+    border-left: 1px solid var(--white);
+}
+
 
 /* 모달 기본 스타일 */
 .modal {
