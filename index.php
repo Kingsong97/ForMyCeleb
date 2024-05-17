@@ -13,29 +13,34 @@
     <meta name="description" content="A layout with an alternate scroll on image columns and a content preview.">
     <meta name="keywords" content="layout, scroll, locomotive scroll, column, javascript, web design">
     <meta name="author" content="Codrops">
+    <link href="http://kingsong97.dothome.co.kr/coding/assets/ico/favicon.png" rel="shortcut icon">
     <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.typekit.net/njz5ajv.css">
-    <link rel="stylesheet" href="../coding/assets/outcss/index.css">
-    <link rel="stylesheet" href="../coding/assets/css/style.css">
+    <link rel="stylesheet" href="coding/assets/outcss/index.css">
+    <link rel="stylesheet" href="coding/assets/css/style.css">
+    <style>
+
+    </style>
 </head>
 
 <body class="loading">
     <main>
         <div class="frame">
-        <h1 class="frame__title"><span id="categoryTitle">category</span></h1>
-        <div class="menu">
-            <div class="menuContent">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact</li>
-                </ul>
+            <h1 class="frame__title"><span id="categoryTitle">category</span></h1>
+            <div class="menu">
+                <div class="menuContent">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Board</a></li>
+                    </ul>
+                </div>
             </div>
-        </div>
             <nav class="frame__links">
                 <a href="#">notice</a>
-                <a href="#">community</a>
-                <a href="#">category</a>
+                <a href="#" id="stayc">stayc</a>
+                <a href="#" id="nmixx">nmixx</a>
             </nav>
             <?php if (isset($_SESSION['memberID'])) { ?>
     <button class="unbutton button-menu" aria-label="Logout">
@@ -69,9 +74,12 @@
             <div class="column-wrap column-wrap--height">
                 <div class="column idol3">
 
-                </div><!-- /column -->
-            </div><!-- /column-wrap -->
-        </div><!-- columns -->
+                </div>
+                <!-- /column -->
+            </div>
+            <!-- /column-wrap -->
+        </div>
+        <!-- columns -->
         <div class="content">
             <div class="content__item">
                 <h2 class="content__item-title">Lucky Wood</h2>
@@ -326,91 +334,13 @@
                     <path d="M0 4.5l5-3M0 4.5l5 3M50 4.5h-77"></path>
                 </svg></button>
         </div>
+        <!-- content -->
 
-        <div id="modal" class="modal show-modal">
-            <div class="modal-content">
-                <!DOCTYPE html>
-                <html lang="ko">
-
-                <head>
-                    <meta charset="UTF-8">
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                    <title>For My Celebrity</title>
-                    <link rel="stylesheet" href="../coding/assets/outcss/login.css">
-                </head>
-
-                <body>
-                    <div class="login-wrap">
-                        <div class="login-html">
-                            <button class="close">X</button>
-
-                            <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1"
-                                class="tab">Sign In</label>
-                            <input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2"
-                                class="tab">Sign Up</label>
-                            <div class="login-form">
-                                <!-- 로그인 폼 -->
-                                <form action="../signup/signinSave.php" method="post" class="sign-in-htm">
-                                    <div class="group">
-                                        <label for="login-user" class="label">아이디</label>
-                                        <input id="login-user" name="youID" type="text" class="input">
-                                    </div>
-                                    <div class="group">
-                                        <label for="login-pass" class="label">비밀번호</label>
-                                        <input id="login-pass" name="youPass" type="password" class="input"
-                                            data-type="password">
-                                    </div>
-                                    <div class="group">
-                                        <input id="login-check" type="checkbox" class="check" checked>
-                                        <label for="login-check"><span class="icon"></span>아이디 저장하기</label>
-                                    </div>
-                                    <div class="group">
-                                        <input type="submit" class="button" value="로그인">
-                                    </div>
-                                    <div class="hr"></div>
-                                    <div class="foot-lnk">
-                                        <a href="#forgot">비밀번호 찾기</a>
-                                    </div>
-                                </form>
-                                <!-- 회원가입 폼 -->
-                                <form action="../signup/signupResult.php" method="post" class="sign-up-htm">
-                                    <div class="group">
-                                        <label for="register-user" class="label">아이디</label>
-                                        <input id="register-user" name="youID" type="text" class="input">
-                                        <div id="userIdResult"></div>
-                                    </div>
-                                    <div class="group">
-                                        <label for="register-pass" class="label">비밀번호</label>
-                                        <input id="register-pass" name="youPass" type="password" class="input"
-                                            data-type="password">
-                                    </div>
-                                    <div class="group">
-                                        <label for="confirm-pass" class="label">비밀번호 확인</label>
-                                        <input id="confirm-pass" name="password_confirm" type="password" class="input"
-                                            data-type="password">
-                                    </div>
-                                    <div class="group">
-                                        <label for="register-email" class="label">이메일</label>
-                                        <input id="register-email" name="youEmail" type="text" class="input">
-                                        <div id="userEmailResult"></div>  <!-- 중복 검사 결과를 표시할 요소 -->
-                                    </div>
-                                    <div class="group">
-                                        <input type="submit" class="button" value="가입하기">
-                                    </div>
-                                    <div class="hr"></div>
-                                    <div class="foot-lnk">
-                                        <label for="tab-1">이미 회원이신가요?</label>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
+                  <div id="login_modal" class="login_modal">
+                    <div class="modal_content">
+                        <?php include 'signup/login.php';?>
                     </div>
-                </body>
-
-                </html>
-
-            </div>
-        </div>
+                  </div>
         <!-- modal -->
     </main>
 
@@ -421,8 +351,20 @@
     <!-- Locomotive Scroll 라이브러리 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"></script>
     <!-- 사용자 정의 JS 로드 -->
+    <script>
+        // 열기
+        function openLogin(){
+            document.getElementById('login_modal').style.display = "block";
+        }
+        // 닫기
+        function openLogin(){
+            document.getElementById('login_modal').style.display = "none";
+        }
+   </script>
 
-    <script src="../coding/assets/js/index.js"></script>
+    <script src="coding/assets/js/index.js"></script>
+    <script src="coding/assets/js/login.js"></script>
+    <script src="coding/assets/js/cate.js"></script>
     <script src="coding/assets/js/regCheck.js"></script>
 </body>
 

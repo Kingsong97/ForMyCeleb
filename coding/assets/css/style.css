@@ -6,8 +6,11 @@
 @import "vars.css";
 
 /* 섹션 설정 */
+@import "../css/header.css";
+@import "../css/footer.css";
 
 
+@import "../css/cate.css";
 /* 외부 CSS */
 @import "../outcss/index.css";
 @import "../outcss/login.css";

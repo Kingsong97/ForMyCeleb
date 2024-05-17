@@ -5,32 +5,61 @@ const column1 = document.querySelector(".idol1");
 const column2 = document.querySelector(".idol2");
 const column3 = document.querySelector(".idol3");
 
-let photoInfo = [];
-let currentIndex = 0;
 
-const fetchPhoto = async () => {
-    await fetch("https://gnlgk.github.io/class2024/json/nmixx.json")
-        .then(res => res.json())
-        .then(items => {
-            photoInfo = items.map(item => {
-                return {
-                    imgurl: item.image_url,
-                };
-            });
-            updatePhoto1();
-            updatePhoto2();
-            updatePhoto3();
-        });
+document.addEventListener("DOMContentLoaded", async () => {
+    const nmixxUrl = "https://gnlgk.github.io/formyceleb/coding/json/nmixx.json";
+    await fetchPhoto(nmixxUrl);  // 이미지 로드를 기다립니다.
+
+});
+
+let photoInfo = [];
+
+const button1 = document.getElementById("nmixx");
+const button2 = document.getElementById("stayc");
+
+button1.addEventListener("click", async () => {
+    const nmixxUrl = "https://gnlgk.github.io/formyceleb/coding/json/nmixx.json"; // 첫 번째 버튼이 클릭되었을 때 가져올 JSON 파일의 URL
+    await fetchPhoto(nmixxUrl);
+    resetScroll(); // 스크롤 위치 초기화
+});
+
+button2.addEventListener("click", async () => {
+    const staycUrl = "https://gnlgk.github.io/formyceleb/coding/json/stayc.json"; // 두 번째 버튼이 클릭되었을 때 가져올 JSON 파일의 URL
+    await fetchPhoto(staycUrl);
+    resetScroll(); // 스크롤 위치 초기화
+});
+
+
+const fetchPhoto = async (url) => {
+    try {
+        const res = await fetch(url);
+        const items = await res.json();
+        photoInfo = items.map(item => ({ imgurl: item.image_url }));
+        updatePhotos();
+        initScroll();
+
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
+    }
+};
+
+// 사진을 업데이트하는 함수
+const updatePhotos = () => {
+    // 각 컬럼의 사진 업데이트
+    updatePhoto1();
+    updatePhoto2();
+    updatePhoto3();
 };
 
 const updatePhoto1 = () => {
     column1.innerHTML = "";
     for (let index = 0; index < photoInfo.length; index++) {
         let photo = photoInfo[index * 3 + 2];
+
         if (photo && photo.imgurl) {
             let photoWrapTag = `
                 <figure class="column__item">
-                    <div class="column__item-imgwrap" data-pos="${(index * 3) + 2}">
+                    <div class="column__item-imgwrap">
                         <div class="column__item-img" style="background-image:url(${photo.imgurl})">
                         </div>
                     </div>
@@ -41,19 +70,21 @@ const updatePhoto1 = () => {
                 </figure>
             `;
             column1.innerHTML += photoWrapTag;
+            console.log(column1)
         }
     }
-    initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
+    initImageInteractions();  // 이미지 업데이트 후 확대 애니메이션 초기화
 };
 
 const updatePhoto2 = () => {
     column2.innerHTML = "";
-    for (let index = 0; index * 3 + 1 < photoInfo.length; index++) {
+    for (let index = 0; index < photoInfo.length; index++) {
         let photo = photoInfo[index * 3 + 1];
+
         if (photo && photo.imgurl) {
             let photoWrapTag = `
                 <figure class="column__item">
-                    <div class="column__item-imgwrap" data-pos="${(index * 3) + 1}">
+                    <div class="column__item-imgwrap">
                         <div class="column__item-img" style="background-image:url(${photo.imgurl})">
                         </div>
                     </div>
@@ -66,17 +97,17 @@ const updatePhoto2 = () => {
             column2.innerHTML += photoWrapTag;
         }
     }
-    initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
+    initImageInteractions();  // 이미지 업데이트 후 확대 애니메이션 초기화
 };
 
 const updatePhoto3 = () => {
     column3.innerHTML = "";
-    for (let index = 0; index * 3 + 3 < photoInfo.length; index++) {
+    for (let index = 0; index < photoInfo.length; index++) {
         let photo = photoInfo[index * 3 + 3];
         if (photo && photo.imgurl) {
             let photoWrapTag = `
                 <figure class="column__item">
-                    <div class="column__item-imgwrap" data-pos="${(index * 3) + 3}">
+                    <div class="column__item-imgwrap">
                         <div class="column__item-img" style="background-image:url(${photo.imgurl})">
                         </div>
                     </div>
@@ -89,17 +120,20 @@ const updatePhoto3 = () => {
             column3.innerHTML += photoWrapTag;
         }
     }
-    initImageInteractions();  // 이미지 업데이트 후 애니메이션 초기화
+    initImageInteractions();  // 이미지 업데이트 후 확대 애니메이션 초기화
 };
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await fetchPhoto();  // 이미지 로드를 기다립니다.
-    initScroll();    // 모든 이미지 업데이트 후 스크롤 초기화
-});
 
+
+
+let scrollInstance = null;
 
 function initScroll() {
-    const scroll = new LocomotiveScroll({
+    if (scrollInstance) {
+        scrollInstance.destroy(); // 기존 인스턴스를 파괴
+    }
+
+    scrollInstance = new LocomotiveScroll({
         el: document.querySelector('[data-scroll-container]'),
         smooth: true,
         lerp: 0.1,
@@ -111,13 +145,23 @@ function initScroll() {
         }
     });
 
-    scroll.on('scroll', (obj) => {
+    scrollInstance.on('scroll', (obj) => {
         const oddColumns = document.querySelectorAll('.column-wrap--height .column');
         oddColumns.forEach(column => {
             column.style.transform = `translateY(${obj.scroll.y}px)`;
         });
     });
 }
+
+
+// JSON 파일이 변경될 때 스크롤 위치 초기화
+const resetScroll = () => {
+    if (scrollInstance) {
+        scrollInstance.scrollTo(0, { duration: 0, disableLerp: true }); // 스크롤 위치를 0으로 초기화
+    }
+};
+
+
 
 function initImageInteractions() {
     const items = document.querySelectorAll('.column__item');
@@ -143,54 +187,3 @@ function initImageInteractions() {
         });
     });
 };
-
-// 로그인 버튼 클릭 시 이벤트 처리
-document.querySelector('#loginButton').addEventListener('click', function () {
-    // 모달 창을 표시하고, 본문을 흐릿하게 만듭니다.
-    document.getElementById('modal').style.display = 'block';
-    document.body.classList.add('blur');
-});
-
-// 모달 창의 닫기 버튼 클릭 시 이벤트 처리
-document.querySelector('.close').addEventListener('click', function () {
-    // 모달 창을 숨기고, 본문의 흐림 효과를 제거합니다.
-    document.getElementById('modal').style.display = 'none';
-    document.body.classList.remove('blur');
-});
-
-// 카테고리 메뉴
-document.getElementById("categoryTitle").addEventListener("click", function () {
-    const menu = document.querySelector(".menu");
-    const menuContent = document.querySelector(".menu .menuContent");
-
-    if (menu.classList.contains("active")) {
-        gsap.to(menuContent, {
-            duration: 0.5,
-            opacity: 0,
-            visibility: "hidden"
-        });
-        gsap.to(menu, {
-            duration: 0.5,
-            width: "70px",
-            opacity: 0,
-            visibility: "hidden",
-            onComplete: () => {
-                menu.classList.remove("active");
-            }
-        });
-    } else {
-        menu.classList.add("active");
-        gsap.timeline()
-            .to(menu, {
-                duration: 0.8,
-                width: "calc(100% - 140px)",
-                opacity: 1,
-                visibility: "visible",
-            })
-            .to(menuContent, {
-                duration: 0.5,
-                opacity: 1,
-                visibility: "visible"
-            }, "-=0.1");
-    }
-});

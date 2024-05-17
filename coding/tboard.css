@@ -1,0 +1,175 @@
+/* 
+    board__inner 
+    |-- board__search : 검색
+    |-- board__table : 글목록
+    |-- board__pages : 페이지
+    |-- board__view : 글보기
+    |-- board__modify
+    |-- board__write : 글쓰기
+*/
+
+
+.board__inner {
+    padding: 80px 0 0;
+}
+
+/* board__search */
+.board__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 10px;
+}
+
+.board__search .left {}
+
+.board__search .left em {
+    color: red;
+}
+
+.board__search .right {}
+
+.board__search .right select {
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    color: #777;
+}
+
+.board__search .right input {
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+}
+
+.board__search .right button {
+    padding: 0.75rem 2rem;
+    border-radius: 5px;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+}
+
+/* board-table */
+.board__table {
+    border-top: 3px solid #000;
+}
+
+.board__table th {
+    background-color: #ddd;
+}
+
+
+.board__table th,
+.board__table td {
+    border-bottom: 1px solid #000;
+    padding: 15px 5px;
+    text-align: center;
+}
+
+.board__pages ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board__pages ul li a {
+    box-sizing: border-box;
+}
+
+.board__pages ul li.active {
+    background-color: #000;
+}
+
+.board__pages ul li.active a {
+    color: #fff;
+}
+
+/* board write */
+.board__write {}
+
+.board__write label {
+    width: 100%;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.board__write input {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.board__write textarea {
+    width: 100%;
+    resize: none;
+    line-height: 1.7;
+}
+
+.board__write .btn {
+    text-align: right;
+}
+
+.board__write .btn button {
+    border-radius: 5px;
+}
+
+/* board-pages */
+.board__pages {
+    margin-top: 80px;
+    justify-content: center;
+}
+
+.board__pages li a {
+    display: inline-block;
+    border: 1px solid #777;
+    width: 46px;
+    height: 46px;
+    text-align: center;
+    line-height: 46px;
+    margin-left: -1px;
+}
+
+.board__pages li.last a,
+.board__pages li.first a {
+    width: auto;
+    padding: 0 5px;
+}
+
+.board__pages li.active a,
+.board__pages li a:hover {
+    background-color: #000;
+    color: #fff;
+    background-color: #000;
+}
+
+/* board-view */
+.board__view {}
+
+.board__view table {
+    border-top: 2px solid #000;
+    border-block-start: 2px solid #000;
+    margin-bottom: 10px;
+}
+
+.board__view table th {
+    background-color: #ddd;
+}
+
+.board__view table th,
+.board__view table td {
+    padding: 15px;
+    border-block-start: 1px solid #000;
+}
+
+.board__view table tr:last-child td {
+    height: 500px;
+    white-space: pre-line;
+}
+
+.board__view .btn {
+    text-align: right;
+}
+
+.board__view .btn a {
+    border-radius: 5px;
+    padding: 1rem 3rem;
+}
