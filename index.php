@@ -7,20 +7,9 @@
 <html lang="ko" class="no-js">
 <!-- php -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>For My Celeb</title>
-    <meta name="description" content="A layout with an alternate scroll on image columns and a content preview.">
-    <meta name="keywords" content="layout, scroll, locomotive scroll, column, javascript, web design">
-    <meta name="author" content="Codrops">
-    <link href="http://kingsong97.dothome.co.kr/coding/assets/ico/favicon.png" rel="shortcut icon">
-    <link href="https://fonts.googleapis.com/css2?family=Prata&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.typekit.net/njz5ajv.css">
-    <link rel="stylesheet" href="coding/assets/outcss/index.css">
-    <link rel="stylesheet" href="coding/assets/css/style.css">
-    <style>
-
-    </style>
+    <?php
+        include "include/head.php"
+    ?>
 </head>
 
 <body class="loading">
@@ -30,17 +19,15 @@
             <div class="menu">
                 <div class="menuContent">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Board</a></li>
+                        <li><a href="#" id="stayc">stayc</a></li>
+                        <li><a href="#" id="nmixx">nmixx</a></li>
                     </ul>
                 </div>
             </div>
             <nav class="frame__links">
-                <a href="#">notice</a>
-                <a href="#" id="stayc">stayc</a>
-                <a href="#" id="nmixx">nmixx</a>
+                <a href="#">Home</a>
+                <a href="board/boardList.php">notice</a>
+                <a href="#">About</a>
             </nav>
             <?php if (isset($_SESSION['memberID'])) { ?>
     <button class="unbutton button-menu" aria-label="Logout">
@@ -335,7 +322,6 @@
                 </svg></button>
         </div>
         <!-- content -->
-
                   <div id="login_modal" class="login_modal">
                     <div class="modal_content">
                         <?php include 'signup/login.php';?>
@@ -351,16 +337,6 @@
     <!-- Locomotive Scroll 라이브러리 로드 -->
     <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.3/dist/locomotive-scroll.min.js"></script>
     <!-- 사용자 정의 JS 로드 -->
-    <script>
-        // 열기
-        function openLogin(){
-            document.getElementById('login_modal').style.display = "block";
-        }
-        // 닫기
-        function openLogin(){
-            document.getElementById('login_modal').style.display = "none";
-        }
-   </script>
 
     <script src="coding/assets/js/index.js"></script>
     <script src="coding/assets/js/login.js"></script>

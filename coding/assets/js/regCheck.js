@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function checkUserId() {
     const userId = document.getElementById('register-user').value;
     if (userId.length > 0) {
-        fetch('signup/checkUserId.php', {
+        fetch('../signup/checkUserId.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'register-user=' + encodeURIComponent(userId)
@@ -43,7 +43,7 @@ function checkUserId() {
 function checkUserEmail() {
     const userEmail = document.getElementById('register-email').value;
     if (userEmail.length > 0) {
-        fetch('signup/checkUserEmail.php', {
+        fetch('../signup/checkUserEmail.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: 'register-email=' + encodeURIComponent(userEmail)

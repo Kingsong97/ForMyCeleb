@@ -1,0 +1,82 @@
+/* 여백 초기화 */
+body,
+div,
+dl,
+dd,
+dt,
+ul,
+li,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+p,
+table,
+th,
+td,
+textarea,
+input,
+figure,
+figcaption,
+blockquote {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    /* 전체 뷰포트 높이를 차지하도록 설정 */
+}
+
+main {
+    flex: 1;
+    min-height: calc(100vh - 20px);
+    /* 최소 높이를 뷰포트 높이에서 조정 */
+    margin-bottom: 20px;
+    /* 남은 공간을 차지하도록 설정 */
+}
+
+/* 테이블 초기화 */
+table {
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+
+/* 블라인드 효과 */
+.blind {
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    margin: -1px;
+    width: 1px;
+    height: 1px;
+}
+
+/* ir 효과 */
+.ir {
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+    line-height: 0;
+    text-indent: -9999px;
+}

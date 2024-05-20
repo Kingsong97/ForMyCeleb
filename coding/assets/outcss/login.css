@@ -37,14 +37,15 @@
     position: relative;
     color: #666;
     background: #aaa;
-    font: 600 16px/18px 'Open Sans', sans-serif;
+    font: 600 15px/18px 'Open Sans', sans-serif;
+    font-family: 'SUITE-Regular';
 }
 
 .login-html {
     width: 100%;
     height: 100%;
     position: absolute;
-    padding: 90px 70px 50px 70px;
+    padding: 60px 80px 50px 80px;
     background: #000;
 }
 
@@ -96,7 +97,7 @@ html::-webkit-scrollbar-button {
     font-size: 22px;
     margin-right: 15px;
     padding-bottom: 5px;
-    margin: 0 15px 10px 0;
+    margin: 0 15px 25px 0;
     display: inline-block;
     border-bottom: 2px solid transparent;
     cursor: pointer;
@@ -156,7 +157,7 @@ html::-webkit-scrollbar-button {
 .login-form .Check_group .input,
 .login-form .group .button {
     border: none;
-    padding: 15px 20px;
+    padding: 17px 20px;
     border-radius: 5px;
     background: rgba(255, 255, 255, .1);
 }
@@ -168,14 +169,19 @@ html::-webkit-scrollbar-button {
 .login-form .label,
 .login-form .group .label {
     color: #aaa;
-    font-size: 12px;
-    font-family: 'gmarket';
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 .login-form .group .button {
     background: #fff;
     color: #000;
     font-weight: 1000;
+    font-family: 'SUITE-Regular';
+    font-size: 15px;
+    margin-top: 43px;
+    margin-bottom: 30px;
+    padding: 15px 20px;
 }
 
 .login-form .group label .icon {
@@ -234,14 +240,14 @@ html::-webkit-scrollbar-button {
     transform: rotate(0);
 }
 
-.hr {
-    height: 2px;
-    margin: 60px 0 50px 0;
-    background: #66666680;
-}
-
 .foot-lnk {
     text-align: center;
+
+}
+
+.foot-lnk a {
+    color: #666 !important;
+    font-family: 'SUITE-Regular';
 }
 
 #loginButton,
