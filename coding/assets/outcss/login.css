@@ -36,8 +36,8 @@
     min-height: 670px;
     position: relative;
     color: #666;
-    background: #aaa;
-    font: 600 15px/18px 'Open Sans', sans-serif;
+    background: #fff;
+    font: 600 14px/20px 'Open Sans', sans-serif;
     font-family: 'SUITE-Regular';
 }
 
@@ -45,8 +45,10 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    padding: 60px 80px 50px 80px;
-    background: #000;
+    padding: 100px 70px 50px 70px;
+    background: #fff;
+    top: -5px;
+    text-align: left;
 }
 
 
@@ -78,6 +80,7 @@ html::-webkit-scrollbar-button {
     transform: rotateY(180deg);
     backface-visibility: hidden;
     transition: all .4s linear;
+    margin-top: 20px;
 }
 
 .login-html .sign-in,
@@ -101,12 +104,13 @@ html::-webkit-scrollbar-button {
     display: inline-block;
     border-bottom: 2px solid transparent;
     cursor: pointer;
+    font-family: 'SUITE-Regular';
 }
 
 .login-html .sign-in:checked+.tab,
 .login-html .sign-up:checked+.tab {
-    color: #fff;
-    border-color: #fff;
+    color: #111;
+    border-color: #111;
 }
 
 .login-form {
@@ -124,13 +128,13 @@ html::-webkit-scrollbar-button {
 .login-form .Check_group .btn {
     width: 17%;
     color: #aaa;
-    font-size: 12px;
+    font-size: 14px;
     border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50px;
-    background: #fff;
+    background: #111;
     cursor: pointer;
 }
 
@@ -143,13 +147,13 @@ html::-webkit-scrollbar-button {
 .login-form .group .input,
 .login-form .group .button {
     width: 100%;
-    color: #fff;
+    color: #111;
     display: block;
 }
 
 .login-form .Check_group .input {
     width: 80%;
-    color: #fff;
+    color: #111;
     display: block;
 }
 
@@ -157,9 +161,11 @@ html::-webkit-scrollbar-button {
 .login-form .Check_group .input,
 .login-form .group .button {
     border: none;
-    padding: 17px 20px;
+    padding: 15px 20px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, .1);
+    background: #fff;
+    border: 2px solid #ddd;
+    font-size: 14px;
 }
 
 .login-form .group input[data-type="password"] {
@@ -168,20 +174,25 @@ html::-webkit-scrollbar-button {
 
 .login-form .label,
 .login-form .group .label {
-    color: #aaa;
-    font-size: 15px;
-    margin-bottom: 10px;
+    color: #111;
+    font-size: 14px;
+    font-weight: 300;
 }
 
 .login-form .group .button {
-    background: #fff;
-    color: #000;
+    background: #111;
+    color: #fff;
     font-weight: 1000;
     font-family: 'SUITE-Regular';
-    font-size: 15px;
-    margin-top: 43px;
-    margin-bottom: 30px;
+    font-size: 14px;
+    margin-top: 60px;
+    margin-bottom: 20px;
     padding: 15px 20px;
+    transition: all 0.5s;
+}
+
+.login-form .group .button:hover {
+    background: #666;
 }
 
 .login-form .group label .icon {
@@ -198,7 +209,7 @@ html::-webkit-scrollbar-button {
     content: '';
     width: 10px;
     height: 2px;
-    background: #fff;
+    background: #111;
     position: absolute;
     transition: all .2s ease-in-out 0s;
 }
@@ -242,69 +253,65 @@ html::-webkit-scrollbar-button {
 
 .foot-lnk {
     text-align: center;
-
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .foot-lnk a {
-    color: #666 !important;
+    color: #666;
     font-family: 'SUITE-Regular';
+    transition: all 0.3s;
+}
+
+.foot-lnk a:hover {
+    color: #111;
 }
 
 #loginButton,
 #logoutButton {
+    color: #fff;
     writing-mode: vertical-rl;
     text-transform: uppercase;
 }
 
 #loginButton:hover,
 #logoutButton:hover {
-    border-left: 1px solid var(--white);
+    border-left: 1px solid #fff;
 }
 
-
-/* 모달 기본 스타일 */
-#login_modal {
-    display: none;
-    position: fixed;
-    z-index: 20000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
+.logo {
+    font-family: meno-banner, serif;
+    font-size: 1.875rem;
+    display: flex;
     align-items: center;
-    background-color: #66666680;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #111;
+    padding: 20px;
+    border-radius: 50px;
+    margin-bottom: 50px;
+    font-weight: 1000;
 }
-
-.modal_content {
-    position: relative;
-    background-color: #000;
-    margin: 8rem auto;
-    width: 31rem;
-    /* 이 값을 조정하여 로그인 창의 너비를 조절 */
-    height: 41rem;
-    /* 이 값을 조정하여 로그인 창의 높이를 조절 */
-    z-index: 1;
-    position: relative;
-}
-
 
 .close {
-    color: #aaa;
-    background-color: #000;
+    color: #111;
+    background-color: #fff;
     float: right;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
     margin-bottom: 5px;
     padding: 3px 8px;
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 18px;
+    right: 12px;
+    border: none;
 }
 
 .close:hover,
 .close:focus {
-    color: #fff;
+    color: #666;
     text-decoration: none;
     cursor: pointer;
 }

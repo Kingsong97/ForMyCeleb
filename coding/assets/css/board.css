@@ -1,122 +1,119 @@
-/* Table Styles */
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    width: 100%;
+/* 
+    board__inner 
+    |-- board__search : 검색
+    |-- board__table : 글목록
+    |-- board__pages : 페이지
+    |-- board__view : 글보기
+    |-- board__modify
+    |-- board__write : 글쓰기
+*/
+
+.board__inner {
+    padding: 80px 0 0;
 }
 
-.page__title h3 {
-    font-size: 28px;
-    color: #333333;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 1.5rem;
+/* board__search */
+.board__search {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 4px;
 }
 
-/* search */
-
-#board__search .search__window {
-    padding: 15px 0;
-    background-color: #f9f7f9;
+.board__search .left {
+    color: var(--white);
 }
 
-#board__search .search__window .search__wrap {
-    position: relative;
-    margin: 0 auto;
-    width: 80%;
-    max-width: 564px;
+.board__search .left em {
+    font-family: 'SUITE-Regular';
+    color: var(--pointColor);
 }
 
-#board__search .search__window .search__wrap input {
-    height: 40px;
-    width: 100%;
-    font-size: 14px;
-    padding: 7px 14px;
-    border: 1px solid #ccc;
+.board__search .right select {
+    padding: 0.7rem 1rem;
+    border-radius: 5px;
+    color: var(--black700);
 }
 
-#board__search .search__window .search__wrap input:focus {
-    border-color: #333;
-    outline: 0;
-    border-width: 1px;
+.board__search .right input {
+    padding: 0.74rem 1rem;
+    border-radius: 5px;
 }
 
-#board__search .search__window .search__wrap .btn {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 108px;
-    padding: 0;
-    font-size: 16px;
+.board__search .right button {
+    padding: 0.765rem 2rem;
+    border-radius: 5px;
+    background-color: var(--black300);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.3s;
 }
 
-/* 글쓰기 버튼 */
-#board__search .search__window .write__wrap a {
-    display: inline-block;
-    padding: 5px 10px;
-    background-color: #555;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 4px;
-    text-align: center;
-    margin-left: 10px;
+.board__search .right button:hover {
+    background-color: var(--black500);
 }
 
-#board__search .search__window .write__wrap a:hover {
-    background-color: #373737;
+/* board-table */
+.board__table {
+    border-top: 3px solid var(--white);
 }
 
-
-/* Specific Table Styles */
-#board__list table {
-    border-top: 2px solid var(--black);
-    border-block-start: 2px solid var(--black);
-    margin-bottom: 10px;
+.board__table th {
+    background-color: var(--white);
+    color: var(--black);
 }
 
-#board__list table th {
-    background-color: var(--white300);
+.board__table td,
+.board__table td a {
+    color: var(--white);
 }
 
-#board__list table th,
-#board__list table td {
-    border-bottom: 1px solid var(--black);
+.board__table th,
+.board__table td {
+    border-bottom: 1px solid var(--white);
     padding: 15px 5px;
     text-align: center;
-    cursor: pointer;
 }
 
-/* Button Styles */
-.btn {
-    display: inline-block;
-    padding: 0 30px;
-    font-size: 15px;
-    font-weight: 400;
-    background: transparent;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    cursor: pointer;
-    border: 1px solid transparent;
-    text-transform: uppercase;
-    border-radius: 0;
+/* board-pages */
+.board__pages {
+    margin-top: 80px;
+    justify-content: center;
 }
 
-.search__btn {
-    background: #555;
+.board__pages ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.board__pages ul li a {
     color: #fff;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 0 4px;
+    background-color: #222;
+    border-radius: 5px;
+    box-sizing: border-box;
 }
 
-.search__btn:hover,
-.search__btn:focus {
-    background: #373737;
-    border-color: #373737;
-    color: #fff;
+.board__pages ul li a.active,
+.board__pages ul li a:hover {
+    background-color: var(--black300);
+    color: var(--white);
 }
+
+.board__pages .prev {
+    padding-left: 46px;
+    background-image: var(--arrow);
+    background-position: 10px center;
+}
+
 
 /* board write */
-.board__write {}
+.board__write {
+    color: var(--white);
+}
 
 .board__write label {
     width: 100%;
@@ -136,10 +133,67 @@ table {
     line-height: 1.7;
 }
 
+.board__write textarea.input-style {
+    height: 500px;
+    resize: none;
+}
+
 .board__write .btn {
     text-align: right;
+    padding: 1rem 0;
 }
 
 .board__write .btn button {
+    padding: 12px 18px;
+    width: 10%;
     border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+/* board-view */
+.board__view {}
+
+.board__view table {}
+
+.board__view table th {
+    background-color: var(--black300);
+    color: var(--white);
+}
+
+.board__view table td {
+    background-color: var(--white);
+    color: var(--blakc100);
+}
+
+.board__view table th,
+.board__view table td {
+    padding: 15px 40px;
+    border-block-start: 1px solid var(--black);
+}
+
+.board__view table tr:last-child td {
+    height: 500px;
+    white-space: pre-line;
+}
+
+.board__view .btn {
+    text-align: right;
+    padding: 1rem 0;
+}
+
+.board__view .btn a {
+    padding: 12px 20px;
+    width: 10%;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 4px;
+}
+@media (max-width: 600px) {
+    .board__search {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }

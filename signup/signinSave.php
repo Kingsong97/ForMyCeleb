@@ -30,7 +30,7 @@
 
             } else {
                 // 비밀번호가 일치하지 않는 경우
-                echo "<script>alert('일치하는 정보를 찾을 수 없습니다. 다시 한번 확인해주세요.');</script>";
+                echo "<script>alert('아이디 또는 비밀번호가 잘못되었습니다.');</script>";
                 echo "<script>window.history.back();</script>";
             }
         }

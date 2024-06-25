@@ -10,7 +10,7 @@
                         </p>
                     </div>
                     <div class="right">
-                        <p>Copyright © WEBS Corp. All Rights Reserved.</p>
+                        <p>Copyright © FORMYCELEB Corp. All Rights Reserved.</p>
                         <div class="sns">
                             <ul>
                                 <li><a href="#"></a></li>

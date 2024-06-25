@@ -1,46 +1,36 @@
-.menuContent ul li a {
-    border: 1px solid transparent;
-    -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
-    transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
+
+/* navigation */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    /* padding 추가로 더 나은 간격 조절 */
+    background-color: #111;
+    padding: 3rem 0;
 }
 
-.menuContent ul li a::before {
-    content: '';
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    z-index: -1;
-    width: 0%;
-    height: 1px;
-    background: #6098FF;
-    box-shadow: inset 0px 0px 0px #6098FF;
-    display: block;
-    -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
-    transition: all 0.4s cubic-bezier(.5, .24, 0, 1)
+.tab {
+    display: flex;
+    flex-grow: 1;
+    /* tab에 자유로운 공간 할당 */
+    max-width: 100%;
+    /* tab 최대 너비 제한 */
 }
 
-.menuContent ul li a:hover::before {
-    width: 100%;
+.tab button {
+    background-color: var(--white600);
+    color: var(--black100);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-right: 15px;
+    font-family: var(--fontN);
+    font-weight: 600;
+    transition: all 0.3s;
 }
 
-.menuContent ul li a::after {
-    content: '';
-    position: absolute;
-    right: 0px;
-    top: 0px;
-    z-index: -1;
-    width: 0%;
-    height: 1px;
-    background: #6098FF;
-    -webkit-transition: all 0.4s cubic-bezier(.5, .24, 0, 1);
-    transition: all 0.4s cubic-bezier(.5, .24, 0, 1)
-}
-
-.menuContent ul li a:hover::after {
-    width: 100%;
-}
-
-.menuContent ul li a:hover {
-    border-left: 1px solid #6098FF;
-    border-right: 1px solid #6098FF;
+.tab button.active {
+    background-color: var(--white);
 }

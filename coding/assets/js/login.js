@@ -22,11 +22,19 @@
 // });
 
 document.addEventListener("DOMContentLoaded", function () {
-    const loginButton = document.querySelector('#loginButton');
+    const indexLoginBtn = document.querySelector('#loginButton');
+    const loginButton = document.querySelector('#login__Button');
     const closeButton = document.querySelector('.close');
-    const loginModal = document.getElementById('login_modal');
+    const loginModal = document.querySelector('#login_modal');
 
     // 로그인 버튼 클릭 시 이벤트 처리
+    if (indexLoginBtn) {
+        indexLoginBtn.addEventListener('click', function () {
+            // 모달 창을 표시하고, 본문을 흐릿하게 만듭니다.
+            loginModal.style.display = 'flex';
+            document.body.classList.add('blur');
+        });
+    }
     if (loginButton) {
         loginButton.addEventListener('click', function () {
             // 모달 창을 표시하고, 본문을 흐릿하게 만듭니다.

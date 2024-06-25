@@ -15,8 +15,8 @@ body {
     --color-link: #fff;
     --color-link-hover: #fff;
     --color-heading: #fff;
-    color: var(--white);
-    background-color: var(--black100);
+    color: var(--black);
+    background-color: #111;
     font-family: nimbus-sans, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -31,12 +31,10 @@ body {
     overflow: hidden !important;
 }
 
-
-
 a {
     text-decoration: none;
     font-family: "nimbus-sans";
-    color: var(--white);
+    color: #fff;
     outline: none;
 }
 
@@ -57,12 +55,45 @@ main::after {
     content: '';
     z-index: 1000;
     pointer-events: none;
-    background: linear-gradient(to bottom, var(--black100), transparent);
+    background: linear-gradient(to bottom, #111, transparent);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 50vh;
+}
+
+
+/* 팝업 스타일 */
+#noticePopup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 9999;
+    color: white;
+    text-align: center;
+    padding-top: 20%;
+}
+
+#noticePopup p {
+    font-size: 1.2rem;
+}
+
+#noticePopup button {
+    background-color: white;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#noticePopup .dont-show {
+    margin-top: 10px;
+    font-size: 0.8rem;
 }
 
 /* // frame */
@@ -126,6 +157,60 @@ main::after {
     margin-top: 0;
     margin-bottom: -6vw;
     transform-origin: 50% 60%;
+}
+
+/* login 모달 */
+#login_modal {
+    display: none;
+    position: fixed;
+    z-index: 20000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #00000080;
+}
+
+.modal_content {
+    position: relative;
+    background-color: #000;
+    margin: 8rem auto;
+    width: 31rem;
+    /* 이 값을 조정하여 로그인 창의 너비를 조절 */
+    height: 41rem;
+    /* 이 값을 조정하여 로그인 창의 높이를 조절 */
+    z-index: 1;
+    position: relative;
+}
+
+/* main 모달 */
+#image-modal {
+    position: fixed;
+    z-index: 20000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000cc;
+    display: none;
+}
+.modal-content {
+    position: relative;
+    background-color: #ffffffd0;
+    border-radius: 10px;
+    margin: 35px auto;
+    width: 80%;
+    height: 90%;
+    z-index: 1;
+}
+#dynamic-content {
+    width: 100%;
+    height: 100%;
+    margin: auto;
 }
 
 /* // columns */
@@ -403,10 +488,11 @@ main::after {
 
     .frame__title #categoryTitle {
         display: inline-block;
+        color: #fff;
     }
 
     .frame__title #categoryTitle:hover {
-        border-left: 1px solid var(--white);
+        border-left: 1px solid #fff;
     }
 
     .frame__links {
@@ -419,12 +505,13 @@ main::after {
     }
 
     .frame__links a {
+        color: #fff;
         border-bottom: 0;
         margin: 0.5rem 0;
     }
 
     .frame__links a:hover {
-        border-left: 1px solid var(--white);
+        border-left: 1px solid #fff;
     }
 
     .frame a,
@@ -596,5 +683,3 @@ html.has-scroll-dragging {
     right: auto;
     bottom: 0;
 }
-
-/*# sourceMappingURL=index.14f68720.css.map */

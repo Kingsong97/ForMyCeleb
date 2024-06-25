@@ -15,7 +15,9 @@
 
     <link href="http://kingsong97.dothome.co.kr/coding/assets/ico/favicon.png" rel="shortcut icon">
     <link rel="stylesheet" href="../coding/assets/css/style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/njz5ajv.css">
+    <link rel="stylesheet" href="../coding/assets/outcss/login.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../coding/assets/js/login.js"></script>
     <script src="../coding/assets/js/regCheck.js"></script>
+    <script src="../coding/assets/js/login.js"></script>

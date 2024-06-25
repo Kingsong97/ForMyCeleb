@@ -1,8 +1,9 @@
 :root {
-    --fontN: "nanumSquareNeo";
-    --fontG: "gmarket";
+    --fontN: "nimbus-sans", sans-serif;
+    --fontG: "SUITE-Regular";
+    --fontM: "meno-banner", serif;
 
-    --mainColor: #eeeeee;
+    --mainColor: #111111;
     --pointColor: #FC4F4F;
 
     --white: #fff;
@@ -23,7 +24,7 @@
     --black700: #777;
 
     /* 기본 폰트 설정 */
-    font-family: var(--fontN);
+    font-family: var(--fontG);
     font-size: 16px;
     line-height: 1.5;
     font-weight: 400;
@@ -36,6 +37,7 @@
     --snsGit: url(../img/sns-git.svg);
     --snsYoutube: url(../img/sns-youtube.svg);
     --snsFigma: url(../img/sns-figma.svg);
+    --arrow: url(../svg/arrow.svg);
 }
 
 
